@@ -11,8 +11,8 @@ icon-resources:  ## Compile SVG icons to importable resource files.
 
 Vorta.app: translations-to-qm
 	pyinstaller --clean --noconfirm vorta.spec
-	cp -R bin/darwin/Sparkle.framework dist/Vorta.app/Contents/Frameworks/
-	cd dist; codesign --deep --sign 'Developer ID Application: Manuel Riel (CNMSCAXT48)' Vorta.app
+	# cp -R bin/darwin/Sparkle.framework dist/Vorta.app/Contents/Frameworks/
+	# cd dist; codesign --deep --sign 'Developer ID Application: Manuel Riel (CNMSCAXT48)' Vorta.app
 
 Vorta.dmg-Vagrant:
 	vagrant up darwin64

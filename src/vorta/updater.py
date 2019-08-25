@@ -4,7 +4,7 @@ from vorta.models import SettingsModel
 
 
 def get_updater():
-    if sys.platform == 'darwin' and getattr(sys, 'frozen', False):
+    if False and sys.platform == 'darwin' and getattr(sys, 'frozen', False):
         """
         Use Sparkle framework on macOS.
 

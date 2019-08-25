@@ -101,10 +101,10 @@ def darwin_prepare()
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew install python
     echo 'export PATH="/usr/local/opt/qt/bin/:$PATH"' >> ~/.bash_profile
-    cd /vagrant
-    pip3 install -e .
-    pip3 install -r requirements.d/dev.txt
-    brew bundle --file=requirements.d/Brewfile
+    # cd /vagrant
+    # pip3 install -e .
+    # pip3 install -r requirements.d/dev.txt
+    # brew bundle --file=requirements.d/Brewfile
   EOF
 end
 
@@ -133,7 +133,7 @@ Vagrant.configure(2) do |config|
    end
 
     config.vm.define "darwin64" do |b|
-        b.vm.box = "monsenso/macos-10.13"
+        b.vm.box = "jhcook/osx-elcapitan-10.11"
         b.vm.provider :virtualbox do |v|
           v.memory = 1536 + $wmem
           v.customize ['modifyvm', :id, '--ostype', 'MacOS_64']
@@ -150,7 +150,7 @@ Vagrant.configure(2) do |config|
 
         b.vm.synced_folder ".", "/vagrant", type: "rsync", user: "vagrant", group: "staff"
         b.vm.provision "darwin_prepare", :type => :shell, :privileged => false, :inline => darwin_prepare()
-        b.vm.provision "darwin_build", :type => :shell, :privileged => false, run: "always", :inline => darwin_build()
+        # b.vm.provision "darwin_build", :type => :shell, :privileged => false, run: "always", :inline => darwin_build()
     end
 
    config.vm.define "win64" do |b|
